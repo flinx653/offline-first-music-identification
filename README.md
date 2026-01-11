@@ -1,84 +1,94 @@
-# Offline-First Music Identification
+# Offline-First Music Identification App
 
-Founder README & Product Vision
---------------------------------
+## Founder & Ownership
 
-Author: flinx653
+**Founder / Product Owner:** Feroze Linx
+**GitHub:** @flinx653
+**Status:** Founder-owned intellectual property
 
-Date: 2026-01-10
+This repository represents the authoritative source for the Offline-First, Environment-Adaptive Music Identification Application. The product vision, principles, and non-negotiables are defined by the Product Definition Document (PDD).
 
-Overview
---------
-Offline-First Music Identification is an on-device audio fingerprinting and music recognition system designed to identify recorded or live music without requiring a persistent internet connection. The product prioritizes privacy, low latency, low power consumption, and the ability to work in constrained environments (mobile devices, embedded hardware, and offline applications).
+---
 
-Founder's note
---------------
-As the founder, my goal with this project is to make music identification accessible, private, and robust — even when users are offline or have intermittent connectivity. I believe users should be able to discover, tag, and search for music wherever they are without always depending on cloud services. This repo is the first step toward a small, efficient, open system that can run on-device and integrate into apps where privacy and offline capabilities matter.
+## Product Vision
 
-Product vision
---------------
-- Deliver a compact, extensible audio fingerprinting engine that runs on-device (mobile and embedded).
-- Provide a developer-friendly API and reference integrations for common platforms (Android, iOS, Linux).
-- Prioritize privacy: by default, all audio processing and matching happens locally; network use is opt-in.
-- Make the system modular so fingerprint databases can be updated incrementally or synced securely.
-- Support offline-first UX: search, match, and queue sync operations when connectivity returns.
+This application exists to identify music in the real world — not ideal conditions.
 
-Problem statement
------------------
-Existing music-identification systems often rely on cloud processing. This creates:
-- Latency and dependency on network connectivity
-- Privacy concerns as raw or processed audio is sent to servers
-- Higher operational costs for developers wanting to ship identification features
+It is designed to work when:
 
-Target users
-------------
-- App developers building privacy-first audio features (e.g., music tagging, content recognition)
-- Device manufacturers and embedded systems teams (IoT, wearables)
-- Researchers and hobbyists interested in audio fingerprinting and offline ML
+* Connectivity is unavailable or unreliable
+* Audio environments are noisy and imperfect
+* Users cannot capture audio at the perfect moment
 
-Solution
---------
-An efficient pipeline that:
-1. Extracts robust audio fingerprints on-device.
-2. Performs approximate nearest neighbor (ANN) search against a compact fingerprint database stored locally.
-3. Optionally syncs new identifiers or aggregates results to the cloud for enrichment when permitted.
+If it fails in clubs, festivals, bars, or similar environments, it fails as a product.
 
-Core features
--------------
-- Lightweight fingerprint extractor optimized for CPU and memory constrained environments
-- Compact fingerprint database format designed for on-device storage
-- Fast approximate matching with graceful degradation under memory constraints
-- Tools for generating and compressing fingerprint databases from audio collections
-- Reference clients and examples for mobile and desktop
+---
 
-Technical overview
-------------------
-- Fingerprinting algorithm: (pluggable) — modular interfaces allow swapping different techniques (e.g., spectral hashing, constellations)
-- Matching engine: ANN index (e.g., product quantization / HNSW or other memory-efficient structures)
-- Storage: small, versioned binary DB files with support for differential updates
-- Languages & tooling: Core components in performant languages (Rust/C++), with language bindings and examples for higher-level platforms
-- Privacy: all local processing by default; optional, explicitly-approved telemetry or sync
+## Core Principles (Non-Negotiable)
 
-Roadmap (high level)
---------------------
-- v0.1: Core fingerprint extractor + simple on-device matcher; reference CLI to build DBs
-- v0.2: Optimized ANN index, platform bindings (Android/iOS), battery and memory profiling
-- v0.3: Update/patch DB delivery mechanism, secure sync primitives, sample apps and SDK docs
-- v1.0: Production-ready SDK, plugin ecosystem, community-contributed fingerprint datasets
+* **Offline-first by default** — audio capture must function without connectivity
+* **Environment-adaptive** — the app adjusts to noise and conditions, not the user
+* **Failure is informative** — unsuccessful identifications feed improvement loops
+* **User trust first** — consent-driven audio, location, and data handling
 
-How to contribute
------------------
-- Issues & PRs welcome. Please open issues for bugs, feature requests, or design discussions.
-- If contributing code, follow the repository's coding standards and include tests where appropriate.
-- Help with platform ports, dataset curation, and performance benchmarks is especially appreciated.
+These principles are binding across all implementations and contributions.
 
-License & attribution
----------------------
-- License: (Specify license here — e.g., MIT, Apache-2.0)
-- If you plan to include third-party datasets or models, document their licenses and attribution here.
+---
 
-Contact
--------
-Founder: flinx653
-Project: flinx653/offline-first-music-identification
-Email/GitHub: (add contact details)
+## Key Capabilities (Conceptual)
+
+* Local audio snippet capture with secure on-device storage
+* Adaptive snippet length optimized for noisy environments
+* Deferred identification when offline, with user confirmation upon reconnection
+* Timestamping and optional geolocation for contextual recall
+* Optional user submission of failed snippets (anonymous or attributed)
+* First-time onboarding tutorial focused on real-world usage
+
+---
+
+## Repository Structure (Initial)
+
+```
+/README.md              → This document
+/docs/                  → Product documents (PDD, diagrams, decisions)
+/frontend/              → Mobile app (future)
+/backend/               → Identification & processing services (future)
+/research/              → Audio experiments, notes, datasets (future)
+/.github/               → Contribution & governance files
+```
+
+At this stage, the repository is documentation-first by design.
+
+---
+
+## Governance & Contributions
+
+* The Founder retains final decision authority on scope, features, and direction
+* Contributions must align with the Product Definition Document
+* No audio data or user data may be introduced without explicit consent mechanisms
+
+Detailed contribution guidelines will be added prior to accepting external contributors.
+
+---
+
+## Product Definition Document
+
+The complete Product Definition Document (PDD) governs this repository and must be read before proposing changes.
+
+**Status:** Finalized (Stage 1)
+
+---
+
+## Roadmap (High-Level)
+
+1. Documentation & ownership locking (current)
+2. Technical feasibility validation
+3. Prototype architecture
+4. Controlled MVP development
+5. Funding / partnership discussions
+
+---
+
+## Disclaimer
+
+This repository does not grant permission to reuse, commercialize, or derivative-build the product concept without explicit written consent from the Founder.
